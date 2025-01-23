@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AG Landing Calculator</title>
+  <!-- Link to CSS -->
+  <link rel="stylesheet" href="AG_Landing_Calc_Style.css">
+</head>
+<body>
+  <!-- Header with logo -->
+  <header>
+    <img src="LOGO_Agrable.png" alt="Agrable Logo" id="logo">
+    <h1>Estimate Your Carbon Credit Revenue</h1>
+    <p>Enter your farm details to see how much revenue you could earn from carbon credits.</p>
+  </header>
+
+  <!-- Form Section -->
+  <section id="form-section">
+    <form id="farm-form">
+      <label for="region">Farm Location (Region):</label>
+      <select id="region" name="region" required>
+        <option value="" disabled selected>Select your region</option>
+        <option value="Auvergne-Rhône-Alpes">Auvergne-Rhône-Alpes</option>
+        <option value="Bourgogne-Franche-Comté">Bourgogne-Franche-Comté</option>
+        <option value="Bretagne">Bretagne</option>
+        <option value="Centre-Val de Loire">Centre-Val de Loire</option>
+        <option value="Corse">Corse</option>
+        <option value="Grand Est">Grand Est</option>
+        <option value="Hauts-de-France">Hauts-de-France</option>
+        <option value="Île-de-France">Île-de-France</option>
+        <option value="Normandie">Normandie</option>
+        <option value="Nouvelle-Aquitaine">Nouvelle-Aquitaine</option>
+        <option value="Occitanie">Occitanie</option>
+        <option value="Pays de la Loire">Pays de la Loire</option>
+        <option value="Provence-Alpes-Côte d'Azur">Provence-Alpes-Côte d'Azur</option>
+      </select>
+      
+      <label for="size">Farm Size (Hectares):</label>
+      <input type="number" id="size" name="size" placeholder="e.g., 50" required>
+      
+      <button type="submit">Calculate My Revenue</button>
+    </form>
+  </section>
+
+  <!-- Results Section -->
+  <section id="result-section" style="display: none;">
+    <h2>Your Carbon Credit Estimate</h2>
+    <p id="result">Calculating...</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Agrable. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Link to JS -->
+  <script src="AG_Landing_Calc_BE.js"></script>
+</body>
+</html>
+
