@@ -55,19 +55,19 @@ form select, form input {
 .Checkbox {
   display: flex;
   align-items: center; /* Align items vertically */
-  justify-content: start; /* Align items to the left */
+  justify-content: space-between; /* Align labels and checkboxes */
   margin-bottom: 0.5rem; /* Space between checkboxes */
 }
 
 .Checkbox input[type="checkbox"] {
-  margin-left: 0; /* Align checkboxes in one column */
-  margin-right: 12px; /* Spacing between checkbox and label */
+  margin-right: 12px; /* Space between label and checkbox */
 }
 
 .Checkbox label {
   flex-grow: 1; /* Ensures label text stays aligned */
   text-align: left; /* Aligns label text to the left */
-  font-weight: normal;
+  font-weight: bold; /* Matches font weight across sections */
+  font-size: 1rem; /* Matches font size */
 }
 
 /* Practices Section Styling */
@@ -75,9 +75,9 @@ form select, form input {
   margin-top: 1.5rem; /* Add space above the practices section */
 }
 
-#practices-section label {
+#practices-container .Checkbox label {
   font-weight: bold;
-  margin-bottom: 0.5rem;
+  font-size: 1rem; /* Match the font size and weight with types section */
 }
 
 #practices-container {
@@ -113,5 +113,6 @@ footer {
   margin-top: 2rem;
   font-size: 0.9rem;
 }
+
 
 
