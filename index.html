@@ -4,8 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AG Landing Calculator</title>
-  <!-- Link to CSS -->
   <link rel="stylesheet" href="AG_Landing_Calc_Style.css">
+  <style>
+    /* Add some styling for checkboxes */
+    .Checkbox {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .Checkbox input[type="checkbox"] {
+      margin-right: 10px;
+    }
+    .Checkbox label {
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
   <!-- Header with logo -->
@@ -46,46 +59,46 @@
         <option value="Rhône Alpes">Rhône Alpes</option>
       </select>
 
-      <!-- Farm Type Selection with Checkboxes -->
+      <!-- Farm Type Selection with Styled Checkboxes -->
       <fieldset>
         <legend>Select Farm Types:</legend>
-        <div>
+        <div class="Checkbox">
           <input type="checkbox" id="agriculture-arable" name="farm-type" value="Agriculture Arable">
           <label for="agriculture-arable">Agriculture Arable</label>
         </div>
-        <div>
+        <div class="Checkbox">
           <input type="checkbox" id="viticulture" name="farm-type" value="Viticulture">
           <label for="viticulture">Viticulture</label>
         </div>
-        <div>
+        <div class="Checkbox">
           <input type="checkbox" id="horticulture" name="farm-type" value="Horticulture">
           <label for="horticulture">Horticulture</label>
         </div>
-        <div>
+        <div class="Checkbox">
           <input type="checkbox" id="elevage" name="farm-type" value="Élevage (Livestock)">
           <label for="elevage">Élevage (Livestock)</label>
         </div>
-        <div>
+        <div class="Checkbox">
           <input type="checkbox" id="agroforestry" name="farm-type" value="Agroforestry">
           <label for="agroforestry">Agroforestry</label>
         </div>
-        <div>
+        <div class="Checkbox">
           <input type="checkbox" id="cultures-permanentes" name="farm-type" value="Cultures Permanentes">
           <label for="cultures-permanentes">Cultures Permanentes</label>
         </div>
-        <div>
+        <div class="Checkbox">
           <input type="checkbox" id="prairies" name="farm-type" value="Prairies et Pâturages">
           <label for="prairies">Prairies et Pâturages</label>
         </div>
-        <div>
+        <div class="Checkbox">
           <input type="checkbox" id="gestion-forestiere" name="farm-type" value="Gestion Forestière">
           <label for="gestion-forestiere">Gestion Forestière</label>
         </div>
-        <div>
+        <div class="Checkbox">
           <input type="checkbox" id="agriculture-biologique" name="farm-type" value="Agriculture Biologique">
           <label for="agriculture-biologique">Agriculture Biologique</label>
         </div>
-        <div>
+        <div class="Checkbox">
           <input type="checkbox" id="tourbieres" name="farm-type" value="Tourbières et Zones Humides">
           <label for="tourbieres">Tourbières et Zones Humides</label>
         </div>
