@@ -18,37 +18,62 @@
   <!-- Form Section -->
   <section id="form-section">
     <form id="farm-form">
+      <!-- Region Selection -->
       <label for="region">Farm Location (Region):</label>
-<select id="region" name="region" required>
-  <option value="" disabled selected>Select your region</option>
-  <option value="Alsace">Alsace</option>
-  <option value="Aquitaine">Aquitaine</option>
-  <option value="Auvergne">Auvergne</option>
-  <option value="Basse Normandie">Basse Normandie</option>
-  <option value="Bourgogne">Bourgogne</option>
-  <option value="Bretagne">Bretagne</option>
-  <option value="Centre">Centre</option>
-  <option value="Champagne Ardennes">Champagne Ardennes</option>
-  <option value="Corse">Corse</option>
-  <option value="Franche Comté">Franche Comté</option>
-  <option value="Haute Normandie">Haute Normandie</option>
-  <option value="Ile de France">Ile de France</option>
-  <option value="Languedoc Roussillon">Languedoc Roussillon</option>
-  <option value="Limousin">Limousin</option>
-  <option value="Lorraine">Lorraine</option>
-  <option value="Midi Pyrénées">Midi Pyrénées</option>
-  <option value="Nord Pas de Calais">Nord Pas de Calais</option>
-  <option value="Pays de la loire">Pays de la loire</option>
-  <option value="Picardie">Picardie</option>
-  <option value="Poitou Charentes">Poitou Charentes</option>
-  <option value="Provence Alpes Côte d'Azur">Provence Alpes Côte d'Azur</option>
-  <option value="Rhône Alpes">Rhône Alpes</option>
-</select>
+      <select id="region" name="region" required>
+        <option value="" disabled selected>Select your region</option>
+        <option value="Alsace">Alsace</option>
+        <option value="Aquitaine">Aquitaine</option>
+        <option value="Auvergne">Auvergne</option>
+        <option value="Basse Normandie">Basse Normandie</option>
+        <option value="Bourgogne">Bourgogne</option>
+        <option value="Bretagne">Bretagne</option>
+        <option value="Centre">Centre</option>
+        <option value="Champagne Ardennes">Champagne Ardennes</option>
+        <option value="Corse">Corse</option>
+        <option value="Franche Comté">Franche Comté</option>
+        <option value="Haute Normandie">Haute Normandie</option>
+        <option value="Ile de France">Ile de France</option>
+        <option value="Languedoc Roussillon">Languedoc Roussillon</option>
+        <option value="Limousin">Limousin</option>
+        <option value="Lorraine">Lorraine</option>
+        <option value="Midi Pyrénées">Midi Pyrénées</option>
+        <option value="Nord Pas de Calais">Nord Pas de Calais</option>
+        <option value="Pays de la Loire">Pays de la Loire</option>
+        <option value="Picardie">Picardie</option>
+        <option value="Poitou Charentes">Poitou Charentes</option>
+        <option value="Provence Alpes Côte d'Azur">Provence Alpes Côte d'Azur</option>
+        <option value="Rhône Alpes">Rhône Alpes</option>
+      </select>
 
-      
+      <!-- Farm Type Selection -->
+      <label for="farm-type">Farm Type:</label>
+      <select id="farm-type" name="farm-type" multiple required>
+        <option value="" disabled selected>Select your farm type</option>
+        <option value="Agriculture Arable">Agriculture Arable</option>
+        <option value="Viticulture">Viticulture</option>
+        <option value="Horticulture">Horticulture</option>
+        <option value="Élevage (Livestock)">Élevage (Livestock)</option>
+        <option value="Agroforestry">Agroforestry</option>
+        <option value="Cultures Permanentes">Cultures Permanentes</option>
+        <option value="Prairies et Pâturages">Prairies et Pâturages</option>
+        <option value="Gestion Forestière">Gestion Forestière</option>
+        <option value="Agriculture Biologique">Agriculture Biologique</option>
+        <option value="Tourbières et Zones Humides">Tourbières et Zones Humides</option>
+      </select>
+
+      <!-- Practices Selection -->
+      <div id="practices-container" style="display: none;">
+        <label for="practices">Select Practices:</label>
+        <select id="practices" name="practices" multiple>
+          <option value="" disabled selected>Select a farm type first</option>
+        </select>
+      </div>
+
+      <!-- Farm Size -->
       <label for="size">Farm Size (Hectares):</label>
       <input type="number" id="size" name="size" placeholder="e.g., 50" required>
-      
+
       <button type="submit">Calculate My Revenue</button>
     </form>
   </section>
@@ -65,43 +90,82 @@
   </footer>
 
   <!-- Inline JavaScript -->
- <script>
-  document.getElementById('farm-form').addEventListener('submit', async (event) => {
-    event.preventDefault(); // Prevent form refresh
+  <script>
+    const farmTypeToPractices = {
+      "Agriculture Arable": ["Cover Crops", "No-Till Farming", "Crop Rotation", "Biochar Application", "Agroforestry", "Precision Agriculture", "Reduced Fertilizer Use"],
+      "Viticulture": ["Cover Crops", "Agroforestry", "Biodynamic Practices", "Organic Agriculture"],
+      "Horticulture": ["Agroforestry", "Composting", "Mulching", "Efficient Irrigation", "Drip Irrigation"],
+      "Élevage (Livestock)": ["Improved Pasture Management", "Manure Management", "Rotational Grazing", "Sylvopastoral Systems", "Feed Additives"],
+      "Agroforestry": ["Tree Planting", "Windbreaks", "Riparian Buffers", "Hedge Planting"],
+      "Cultures Permanentes": ["Pruning and Mulching", "Agroforestry", "Organic Agriculture Practices"],
+      "Prairies et Pâturages": ["Conservation Grazing", "Pasture Restoration", "Rotational Grazing", "Biodiversity Management", "Organic Amendments"],
+      "Gestion Forestière": ["Reforestation", "Afforestation", "Sustainable Forest Management"],
+      "Agriculture Biologique": ["Composting", "Cover Crops", "Reduced Synthetic Inputs"],
+      "Tourbières et Zones Humides": ["Peatland Restoration", "Wetland Conservation"]
+    };
 
-    // Get form data
-    const region = document.getElementById('region').value;
-    const size = document.getElementById('size').value;
+    // Update practices dropdown based on selected farm type(s)
+    document.getElementById('farm-type').addEventListener('change', (event) => {
+      const selectedFarmTypes = Array.from(event.target.selectedOptions).map(option => option.value);
+      const practicesDropdown = document.getElementById('practices');
+      const practicesContainer = document.getElementById('practices-container');
 
-    // Show debugging logs on the page
-    const resultSection = document.getElementById('result-section');
-    const result = document.getElementById('result');
-    resultSection.style.display = 'block';
-    result.innerHTML = `Debug: Region: ${region}, Size: ${size} hectares.<br>Sending request...`;
+      // Clear previous options
+      practicesDropdown.innerHTML = '';
 
-    try {
-      // Send request to backend
-      const response = await fetch('https://landing-calc-be.onrender.com/calculate-revenue', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ region, size }),
+      // Add new options based on selected farm types
+      const selectedPractices = selectedFarmTypes.flatMap(type => farmTypeToPractices[type] || []);
+      const uniquePractices = [...new Set(selectedPractices)];
+
+      uniquePractices.forEach(practice => {
+        const option = document.createElement('option');
+        option.value = practice;
+        option.textContent = practice;
+        practicesDropdown.appendChild(option);
       });
 
-      if (!response.ok) {
-        throw new Error('Backend returned an error.');
+      // Show practices dropdown
+      practicesContainer.style.display = 'block';
+    });
+
+    document.getElementById('farm-form').addEventListener('submit', async (event) => {
+      event.preventDefault(); // Prevent form refresh
+
+      // Get form data
+      const region = document.getElementById('region').value;
+      const size = document.getElementById('size').value;
+      const farmTypes = Array.from(document.getElementById('farm-type').selectedOptions).map(option => option.value);
+      const practices = Array.from(document.getElementById('practices').selectedOptions).map(option => option.value);
+
+      // Show debugging logs on the page
+      const resultSection = document.getElementById('result-section');
+      const result = document.getElementById('result');
+      resultSection.style.display = 'block';
+      result.innerHTML = `Debug: Region: ${region}, Size: ${size} hectares.<br>Farm Types: ${farmTypes.join(', ')}.<br>Practices: ${practices.join(', ')}.<br>Sending request...`;
+
+      try {
+        // Send request to backend
+        const response = await fetch('https://landing-calc-be.onrender.com/calculate-revenue', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ region, size, farmTypes, practices }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Backend returned an error.');
+        }
+
+        // Parse response
+        const data = await response.json();
+        result.innerHTML = `Result: ${data.result}`;
+      } catch (error) {
+        result.innerHTML = `Error: ${error.message}. Please check the backend server or try again.`;
       }
-
-      // Parse response
-      const data = await response.json();
-      result.innerHTML = `Result: ${data.result}`;
-    } catch (error) {
-      result.innerHTML = `Error: ${error.message}. Please check the backend server or try again.`;
-    }
-  });
-</script>
-
+    });
+  </script>
 </body>
 </html>
+
 
