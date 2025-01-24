@@ -51,6 +51,39 @@ form select, form input {
   box-sizing: border-box; /* Ensures padding doesn't affect width */
 }
 
+/* Checkbox Alignment Styles */
+.Checkbox {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  justify-content: start; /* Align items to the left */
+  margin-bottom: 0.5rem; /* Space between checkboxes */
+}
+
+.Checkbox input[type="checkbox"] {
+  margin-left: 0; /* Align checkboxes in one column */
+  margin-right: 12px; /* Spacing between checkbox and label */
+}
+
+.Checkbox label {
+  flex-grow: 1; /* Ensures label text stays aligned */
+  text-align: left; /* Aligns label text to the left */
+  font-weight: normal;
+}
+
+/* Practices Section Styling */
+#practices-section {
+  margin-top: 1.5rem; /* Add space above the practices section */
+}
+
+#practices-section label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+#practices-container {
+  margin-top: 1rem;
+}
+
 /* Button Styles */
 form button {
   width: 100%; /* Full width */
@@ -80,4 +113,5 @@ footer {
   margin-top: 2rem;
   font-size: 0.9rem;
 }
+
 
