@@ -58,60 +58,63 @@
         <option value="Rhône Alpes">Rhône Alpes</option>
       </select>
 
-      <!-- Farm Type Selection with Styled Checkboxes -->
-      <fieldset>
-        <legend>Select Farm Types:</legend>
-        <div class="Checkbox">
-          <label for="agriculture-arable">Agriculture Arable</label>
-          <input type="checkbox" id="agriculture-arable" name="farm-type" value="Agriculture Arable">
-        </div>
-        <div class="Checkbox">
-          <label for="viticulture">Viticulture</label>
-          <input type="checkbox" id="viticulture" name="farm-type" value="Viticulture">
-        </div>
-        <div class="Checkbox">
-          <label for="horticulture">Horticulture</label>
-          <input type="checkbox" id="horticulture" name="farm-type" value="Horticulture">
-        </div>
-        <div class="Checkbox">
-          <label for="elevage">Élevage (Livestock)</label>
-          <input type="checkbox" id="elevage" name="farm-type" value="Élevage (Livestock)">
-        </div>
-        <div class="Checkbox">
-          <label for="agroforestry">Agroforestry</label>
-          <input type="checkbox" id="agroforestry" name="farm-type" value="Agroforestry">
-        </div>
-        <div class="Checkbox">
-          <label for="cultures-permanentes">Cultures Permanentes</label>
-          <input type="checkbox" id="cultures-permanentes" name="farm-type" value="Cultures Permanentes">
-        </div>
-        <div class="Checkbox">
-          <label for="prairies">Prairies et Pâturages</label>
-          <input type="checkbox" id="prairies" name="farm-type" value="Prairies et Pâturages">
-        </div>
-        <div class="Checkbox">
-          <label for="gestion-forestiere">Gestion Forestière</label>
-          <input type="checkbox" id="gestion-forestiere" name="farm-type" value="Gestion Forestière">
-        </div>
-        <div class="Checkbox">
-          <label for="agriculture-biologique">Agriculture Biologique</label>
-          <input type="checkbox" id="agriculture-biologique" name="farm-type" value="Agriculture Biologique">
-        </div>
-        <div class="Checkbox">
-          <label for="tourbieres">Tourbières et Zones Humides</label>
-          <input type="checkbox" id="tourbieres" name="farm-type" value="Tourbières et Zones Humides">
-        </div>
-      </fieldset>
+    <!-- Farm Type Selection with Styled Checkboxes -->
+<fieldset>
+  <legend>Select Farm Types:</legend>
+  <div class="Checkbox-container">
+    <div class="Checkbox">
+      <label for="agriculture-arable">Agriculture Arable</label>
+      <input type="checkbox" id="agriculture-arable" name="farm-type" value="Agriculture Arable">
+    </div>
+    <div class="Checkbox">
+      <label for="viticulture">Viticulture</label>
+      <input type="checkbox" id="viticulture" name="farm-type" value="Viticulture">
+    </div>
+    <div class="Checkbox">
+      <label for="horticulture">Horticulture</label>
+      <input type="checkbox" id="horticulture" name="farm-type" value="Horticulture">
+    </div>
+    <div class="Checkbox">
+      <label for="elevage">Élevage (Livestock)</label>
+      <input type="checkbox" id="elevage" name="farm-type" value="Élevage (Livestock)">
+    </div>
+    <div class="Checkbox">
+      <label for="agroforestry">Agroforestry</label>
+      <input type="checkbox" id="agroforestry" name="farm-type" value="Agroforestry">
+    </div>
+    <div class="Checkbox">
+      <label for="cultures-permanentes">Cultures Permanentes</label>
+      <input type="checkbox" id="cultures-permanentes" name="farm-type" value="Cultures Permanentes">
+    </div>
+    <div class="Checkbox">
+      <label for="prairies">Prairies et Pâturages</label>
+      <input type="checkbox" id="prairies" name="farm-type" value="Prairies et Pâturages">
+    </div>
+    <div class="Checkbox">
+      <label for="gestion-forestiere">Gestion Forestière</label>
+      <input type="checkbox" id="gestion-forestiere" name="farm-type" value="Gestion Forestière">
+    </div>
+    <div class="Checkbox">
+      <label for="agriculture-biologique">Agriculture Biologique</label>
+      <input type="checkbox" id="agriculture-biologique" name="farm-type" value="Agriculture Biologique">
+    </div>
+    <div class="Checkbox">
+      <label for="tourbieres">Tourbières et Zones Humides</label>
+      <input type="checkbox" id="tourbieres" name="farm-type" value="Tourbières et Zones Humides">
+    </div>
+  </div>
+</fieldset>
 
-      <!-- Practices Selection -->
-      <div id="practices-container" style="display: none;">
-        <fieldset>
-          <legend>Select Practices:</legend>
-          <div id="practices-list">
-            <!-- Practices will populate dynamically -->
-          </div>
-        </fieldset>
-      </div>
+<!-- Practices Selection -->
+<div id="practices-container" style="display: none;">
+  <fieldset>
+    <legend>Select Practices:</legend>
+    <div id="practices-list" class="Checkbox-container">
+      <!-- Practices will populate dynamically -->
+    </div>
+  </fieldset>
+</div>
+
 
       <!-- Farm Size -->
       <label for="size">Farm Size (Hectares):</label>
