@@ -46,28 +46,59 @@
         <option value="Rhône Alpes">Rhône Alpes</option>
       </select>
 
-      <!-- Farm Type Selection -->
-      <label for="farm-type">Farm Type:</label>
-      <select id="farm-type" name="farm-type" multiple required>
-        <option value="" disabled selected>Select your farm type</option>
-        <option value="Agriculture Arable">Agriculture Arable</option>
-        <option value="Viticulture">Viticulture</option>
-        <option value="Horticulture">Horticulture</option>
-        <option value="Élevage (Livestock)">Élevage (Livestock)</option>
-        <option value="Agroforestry">Agroforestry</option>
-        <option value="Cultures Permanentes">Cultures Permanentes</option>
-        <option value="Prairies et Pâturages">Prairies et Pâturages</option>
-        <option value="Gestion Forestière">Gestion Forestière</option>
-        <option value="Agriculture Biologique">Agriculture Biologique</option>
-        <option value="Tourbières et Zones Humides">Tourbières et Zones Humides</option>
-      </select>
+      <!-- Farm Type Selection with Checkboxes -->
+      <fieldset>
+        <legend>Select Farm Types:</legend>
+        <div>
+          <input type="checkbox" id="agriculture-arable" name="farm-type" value="Agriculture Arable">
+          <label for="agriculture-arable">Agriculture Arable</label>
+        </div>
+        <div>
+          <input type="checkbox" id="viticulture" name="farm-type" value="Viticulture">
+          <label for="viticulture">Viticulture</label>
+        </div>
+        <div>
+          <input type="checkbox" id="horticulture" name="farm-type" value="Horticulture">
+          <label for="horticulture">Horticulture</label>
+        </div>
+        <div>
+          <input type="checkbox" id="elevage" name="farm-type" value="Élevage (Livestock)">
+          <label for="elevage">Élevage (Livestock)</label>
+        </div>
+        <div>
+          <input type="checkbox" id="agroforestry" name="farm-type" value="Agroforestry">
+          <label for="agroforestry">Agroforestry</label>
+        </div>
+        <div>
+          <input type="checkbox" id="cultures-permanentes" name="farm-type" value="Cultures Permanentes">
+          <label for="cultures-permanentes">Cultures Permanentes</label>
+        </div>
+        <div>
+          <input type="checkbox" id="prairies" name="farm-type" value="Prairies et Pâturages">
+          <label for="prairies">Prairies et Pâturages</label>
+        </div>
+        <div>
+          <input type="checkbox" id="gestion-forestiere" name="farm-type" value="Gestion Forestière">
+          <label for="gestion-forestiere">Gestion Forestière</label>
+        </div>
+        <div>
+          <input type="checkbox" id="agriculture-biologique" name="farm-type" value="Agriculture Biologique">
+          <label for="agriculture-biologique">Agriculture Biologique</label>
+        </div>
+        <div>
+          <input type="checkbox" id="tourbieres" name="farm-type" value="Tourbières et Zones Humides">
+          <label for="tourbieres">Tourbières et Zones Humides</label>
+        </div>
+      </fieldset>
 
       <!-- Practices Selection -->
       <div id="practices-container" style="display: none;">
-        <label for="practices">Select Practices:</label>
-        <select id="practices" name="practices" multiple>
-          <option value="" disabled selected>Select a farm type first</option>
-        </select>
+        <fieldset>
+          <legend>Select Practices:</legend>
+          <div id="practices-list">
+            <!-- Practices will populate dynamically -->
+          </div>
+        </fieldset>
       </div>
 
       <!-- Farm Size -->
@@ -104,28 +135,34 @@
       "Tourbières et Zones Humides": ["Peatland Restoration", "Wetland Conservation"]
     };
 
-    // Update practices dropdown based on selected farm type(s)
-    document.getElementById('farm-type').addEventListener('change', (event) => {
-      const selectedFarmTypes = Array.from(event.target.selectedOptions).map(option => option.value);
-      const practicesDropdown = document.getElementById('practices');
-      const practicesContainer = document.getElementById('practices-container');
+    // Show Practices List Once Farm Types are Selected
+    document.querySelectorAll('input[name="farm-type"]').forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        const selectedFarmTypes = Array.from(document.querySelectorAll('input[name="farm-type"]:checked')).map(cb => cb.value);
+        const practicesContainer = document.getElementById('practices-container');
+        const practicesList = document.getElementById('practices-list');
 
-      // Clear previous options
-      practicesDropdown.innerHTML = '';
+        practicesList.innerHTML = ''; // Clear previous practices
 
-      // Add new options based on selected farm types
-      const selectedPractices = selectedFarmTypes.flatMap(type => farmTypeToPractices[type] || []);
-      const uniquePractices = [...new Set(selectedPractices)];
+        if (selectedFarmTypes.length > 0) {
+          // Populate practices
+          const selectedPractices = selectedFarmTypes.flatMap(type => farmTypeToPractices[type] || []);
+          const uniquePractices = [...new Set(selectedPractices)];
 
-      uniquePractices.forEach(practice => {
-        const option = document.createElement('option');
-        option.value = practice;
-        option.textContent = practice;
-        practicesDropdown.appendChild(option);
+          uniquePractices.forEach(practice => {
+            const div = document.createElement('div');
+            div.innerHTML = `
+              <input type="checkbox" id="${practice}" name="practices" value="${practice}">
+              <label for="${practice}">${practice}</label>
+            `;
+            practicesList.appendChild(div);
+          });
+
+          practicesContainer.style.display = 'block'; // Show the practices section
+        } else {
+          practicesContainer.style.display = 'none'; // Hide the practices section if no farm type is selected
+        }
       });
-
-      // Show practices dropdown
-      practicesContainer.style.display = 'block';
     });
 
     document.getElementById('farm-form').addEventListener('submit', async (event) => {
