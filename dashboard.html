@@ -58,17 +58,39 @@
     }
 
     .form-section {
+      margin-top: 2rem;
+    }
+
+    .activity-buttons {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
     }
 
-    .form-section form {
-      flex: 1;
-      margin-right: 1rem;
+    .activity-button {
+      padding: 0.8rem 1.2rem;
+      font-size: 1rem;
+      background-color: #2a905c;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
     }
 
-    form input, form select, form button {
-      display: block;
+    .activity-button:hover {
+      background-color: #267c48;
+    }
+
+    form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    form input, form select, form button, form textarea {
       width: 100%;
       margin-bottom: 1rem;
       padding: 0.8rem;
@@ -88,14 +110,6 @@
 
     form button:hover {
       background-color: #267c48;
-    }
-
-    .chart-container {
-      margin: 2rem 0;
-    }
-
-    .chart-container h2 {
-      text-align: center;
     }
 
     footer {
@@ -135,32 +149,31 @@
     </div>
 
     <!-- Log New Activity Section -->
-<div class="form-section">
-  <h2>Log New Activity</h2>
-  <div class="activity-buttons">
-    <button id="emissions-btn" type="button" class="activity-button">Emissions</button>
-    <button id="sequestration-btn" type="button" class="activity-button">Sequestration</button>
+    <div class="form-section">
+      <h2>Log New Activity</h2>
+      <div class="activity-buttons">
+        <button id="emissions-btn" type="button" class="activity-button">Emissions</button>
+        <button id="sequestration-btn" type="button" class="activity-button">Sequestration</button>
+      </div>
+      <form id="log-form" style="display: none;">
+        <label for="activity-type">Activity Type</label>
+        <select id="activity-type" name="activity-type" required>
+          <option value="" disabled selected>Select activity</option>
+        </select>
+
+        <label for="amount">Amount</label>
+        <input type="number" id="amount" name="amount" placeholder="Enter amount" required>
+
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="notes">Notes</label>
+        <textarea id="notes" name="notes" rows="3" placeholder="Enter any notes"></textarea>
+
+        <button type="submit">Log Activity</button>
+      </form>
+    </div>
   </div>
-  
-  <form id="log-form" style="display: none;">
-    <label for="activity-type">Activity Type</label>
-    <select id="activity-type" name="activity-type" required>
-      <option value="" disabled selected>Select activity</option>
-    </select>
-
-    <label for="amount">Amount</label>
-    <input type="number" id="amount" name="amount" placeholder="Enter amount" required>
-
-    <label for="date">Date</label>
-    <input type="date" id="date" name="date" required>
-
-    <label for="notes">Notes</label>
-    <textarea id="notes" name="notes" rows="3" placeholder="Enter any notes"></textarea>
-
-    <button type="submit">Log Activity</button>
-  </form>
-</div>
-
 
   <!-- Footer -->
   <footer>
@@ -169,39 +182,7 @@
 
   <!-- Include Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    // Initialize the Chart
-    const ctx = document.getElementById('impactChart').getContext('2d');
-    const impactChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-        datasets: [{
-          label: 'Net Impact (CO₂e)',
-          data: [100, 90, 85, 80, 78, 75],
-          borderColor: '#2a905c',
-          borderWidth: 2,
-          fill: false,
-        }]
-      },
-      options: {
-        responsive: true,
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
+  <script src="AG_Landing_Calc_BE.js"></script>
+</body>
+</html>
 
-    // Form Submission
-    document.getElementById('log-form').addEventListener('submit', (event) => {
-      event.preventDefault();
-
-      const activityType = document.getElementById('activity-type').value;
-      const amount = document.getElementById('amount').value;
-      const date = document.getElementById('date').value;
-      const notes = document.getElementById('notes').value;
-
-      console.log(`Logged Activity:
-        Type: ${a
