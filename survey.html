@@ -5,72 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SOC Potential Survey</title>
   <link rel="stylesheet" href="AG_Landing_Calc_Style.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f6f5ec;
-    }
-
-    header {
-      text-align: center;
-      background-color: #2a905c;
-      color: white;
-      padding: 1rem;
-    }
-
-    header h1 {
-      margin: 0;
-    }
-
-    .container {
-      max-width: 700px;
-      margin: 2rem auto;
-      padding: 1rem;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .question {
-      margin-bottom: 1rem;
-    }
-
-    .question label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-
-    select, input, button {
-      width: 100%;
-      padding: 0.8rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-size: 1rem;
-    }
-
-    button {
-      background-color: #2a905c;
-      color: white;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #267c48;
-    }
-
-    #result-section {
-      display: none;
-      text-align: center;
-      font-size: 1.2rem;
-      margin-top: 2rem;
-    }
-  </style>
 </head>
 <body>
   <header>
@@ -93,14 +27,18 @@
         <option value="Systèmes naturels et semi-naturels">Systèmes naturels et semi-naturels</option>
       </select>
 
-      <div id="questions-container" style="display:none;">
-        <!-- Questions will be dynamically inserted here -->
+      <button type="button" id="start-survey" style="display:none;">Next</button>
+
+      <div id="question-container" style="display:none;">
+        <label id="question-label"></label>
+        <select id="question-select"></select>
+        <button type="button" id="next-question">Next</button>
       </div>
 
-      <button type="submit">Calculate SOC Potential</button>
+      <button type="submit" id="calculate-button" style="display:none;">Calculate Potential SOC</button>
     </form>
 
-    <section id="result-section">
+    <section id="result-section" style="display: none;">
       <h2>Potential SOC Increase</h2>
       <p id="result">Calculating...</p>
     </section>
@@ -109,6 +47,7 @@
   <footer>
     <p>&copy; 2025 Agrable. All Rights Reserved.</p>
   </footer>
-<script src="survey.js"></script>
+
+  <script src="survey.js"></script>
 </body>
 </html>
