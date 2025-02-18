@@ -3,16 +3,82 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Farm SOC Potential</title>
+  <title>SOC Potential Survey</title>
   <link rel="stylesheet" href="AG_Landing_Calc_Style.css">
   <script defer src="survey.js"></script> <!-- JavaScript for logic -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f6f5ec;
+    }
+
+    header {
+      text-align: center;
+      background-color: #2a905c;
+      color: white;
+      padding: 1rem;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .question {
+      margin-bottom: 1rem;
+    }
+
+    .question label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    select, input, button {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #2a905c;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #267c48;
+    }
+
+    #result-section {
+      display: none;
+      text-align: center;
+      font-size: 1.2rem;
+      margin-top: 2rem;
+    }
+  </style>
 </head>
 <body>
   <header>
     <h1>Calculate Your Farm's SOC Potential</h1>
   </header>
 
-  <section id="survey-section">
+  <div class="container">
     <form id="survey-form">
       <label for="farm-name">Farm Name:</label>
       <input type="text" id="farm-name" name="farm-name" required>
@@ -29,21 +95,20 @@
       </select>
 
       <div id="questions-container" style="display:none;">
-        <!-- Questions will populate dynamically -->
+        <!-- Questions will be dynamically inserted here -->
       </div>
 
       <button type="submit">Calculate SOC Potential</button>
     </form>
-  </section>
 
-  <section id="result-section" style="display: none;">
-    <h2>Potential SOC Increase</h2>
-    <p id="result">Calculating...</p>
-  </section>
+    <section id="result-section">
+      <h2>Potential SOC Increase</h2>
+      <p id="result">Calculating...</p>
+    </section>
+  </div>
 
   <footer>
     <p>&copy; 2025 Agrable. All Rights Reserved.</p>
   </footer>
 </body>
 </html>
-
