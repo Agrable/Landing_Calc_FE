@@ -11,25 +11,33 @@ document.addEventListener('DOMContentLoaded', function () {
   let currentQuestionIndex = 0;
   let totalSOCPotential = 0;
 
+  // Ensure farm type dropdown is detected
   farmTypeDropdown.addEventListener('change', function () {
     const farmType = this.value;
     currentQuestions = getQuestionsForFarmType(farmType);
     currentQuestionIndex = 0;
     totalSOCPotential = 0;
 
+    console.log("Farm type selected:", farmType); // Debugging: Check if selection is detected
+    console.log("Loaded questions:", currentQuestions); // Debugging: Check if questions are loaded
+
     if (currentQuestions.length > 0) {
-      startSurveyButton.style.display = 'block';
+      startSurveyButton.style.display = 'block'; // Show "Next" button
     } else {
       startSurveyButton.style.display = 'none';
     }
   });
 
+  // Click "Next" to start the survey
   startSurveyButton.addEventListener('click', function () {
-    startSurveyButton.style.display = 'none';
-    questionContainer.style.display = 'block';
+    console.log("Next button clicked - Showing first question"); // Debugging
+
+    startSurveyButton.style.display = 'none'; // Hide "Next" button
+    questionContainer.style.display = 'block'; // Show question area
     showQuestion();
   });
 
+  // Click "Next" to move to the next question
   nextQuestionButton.addEventListener('click', function () {
     const selectedValue = questionSelect.value;
     if (!selectedValue) {
@@ -40,21 +48,24 @@ document.addEventListener('DOMContentLoaded', function () {
     const socValues = JSON.parse(questionSelect.dataset.socValues);
     const selectedSOC = socValues[selectedValue];
 
-    // Adjust calculation for negative values
+    // Adjust calculation for negative values (Add absolute value to max)
     const maxPotential = Object.values(socValues).reduce((max, value) => Math.max(max, value), 0);
     const adjustedSOC = maxPotential + selectedSOC;
     totalSOCPotential += adjustedSOC;
 
+    console.log(`Selected: ${selectedValue}, SOC Adjusted: ${adjustedSOC}, Total: ${totalSOCPotential}`); // Debugging
+
     currentQuestionIndex++;
 
     if (currentQuestionIndex < currentQuestions.length) {
-      showQuestion();
+      showQuestion(); // Show next question
     } else {
-      questionContainer.style.display = 'none';
-      calculateButton.style.display = 'block';
+      questionContainer.style.display = 'none'; // Hide question area
+      calculateButton.style.display = 'block'; // Show "Calculate" button
     }
   });
 
+  // Submit form to calculate total SOC increase
   document.getElementById('survey-form').addEventListener('submit', async function (event) {
     event.preventDefault();
 
@@ -81,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  // Function to display the current question
   function showQuestion() {
     const question = currentQuestions[currentQuestionIndex];
 
@@ -101,8 +113,11 @@ document.addEventListener('DOMContentLoaded', function () {
       opt.textContent = option.label;
       questionSelect.appendChild(opt);
     });
+
+    console.log("Showing Question:", question.text); // Debugging
   }
 
+  // Function to return questions based on farm type
   function getQuestionsForFarmType(farmType) {
     return {
       "Grandes cultures, Maraîchage, Viticulture, PPAM": [
