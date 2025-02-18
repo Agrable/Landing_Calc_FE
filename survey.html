@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Farm SOC Potential</title>
   <link rel="stylesheet" href="AG_Landing_Calc_Style.css">
-  <script defer src="survey.js"></script> <!-- JavaScript for handling logic -->
+  <script defer src="survey.js"></script> <!-- JavaScript for logic -->
 </head>
 <body>
   <header>
@@ -23,18 +23,16 @@
       <label for="farm-type">Farm Type:</label>
       <select id="farm-type" name="farm-type" required>
         <option value="" disabled selected>Select farm type</option>
-        <option value="Arable Agriculture">Arable Agriculture</option>
-        <option value="Viticulture">Viticulture</option>
-        <option value="Horticulture">Horticulture</option>
-        <option value="Livestock">Livestock</option>
-        <option value="Agroforestry">Agroforestry</option>
+        <option value="Grandes cultures, Maraîchage, Viticulture, PPAM">Grandes cultures, Maraîchage, Viticulture, PPAM</option>
+        <option value="Prairies et élevages">Prairies et élevages</option>
+        <option value="Systèmes naturels et semi-naturels">Systèmes naturels et semi-naturels</option>
       </select>
 
       <div id="questions-container" style="display:none;">
         <!-- Questions will populate dynamically -->
       </div>
 
-      <button type="submit">Calculate Potential SOC</button>
+      <button type="submit">Calculate SOC Potential</button>
     </form>
   </section>
 
@@ -48,3 +46,4 @@
   </footer>
 </body>
 </html>
+
