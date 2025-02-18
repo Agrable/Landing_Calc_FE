@@ -17,21 +17,42 @@
     .Checkbox input[type="checkbox"] {
       margin-left: 10px; /* Align checkbox to the right */
     }
+
+    /* Styling for navigation buttons */
+    .nav-buttons {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .nav-buttons button {
+      background-color: #2a905c;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin: 5px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .nav-buttons button:hover {
+      background-color: #267c48;
+    }
   </style>
 </head>
 <body>
-  <!-- Header with logo -->
+  <!-- Header with logo and navigation buttons -->
   <header>
     <img src="LOGO_Agrable.png" alt="Agrable Logo" id="logo">
     <h1>Estimate Your Carbon Credit Revenue</h1>
     <p>Enter your farm details to see how much revenue you could earn from carbon credits.</p>
-  </header>
 
-<!-- Dashboard Access Section -->
-<section id="dashboard-access">
-  <button id="dashboard-button" onclick="window.location.href='dashboard.html'">Access Dashboard</button>
-</section>
-<a href="survey.html"><button>Take the SOC Survey</button></a>
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+      <button onclick="window.location.href='dashboard.html'">Access Dashboard</button>
+      <button onclick="window.location.href='survey.html'">Take the SOC Survey</button>
+    </div>
+  </header>
 
   
   <!-- Form Section -->
