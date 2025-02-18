@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farm SOC Potential</title>
+  <link rel="stylesheet" href="AG_Landing_Calc_Style.css">
+  <script defer src="survey.js"></script> <!-- JavaScript for handling logic -->
+</head>
+<body>
+  <header>
+    <h1>Calculate Your Farm's SOC Potential</h1>
+  </header>
+
+  <section id="survey-section">
+    <form id="survey-form">
+      <label for="farm-name">Farm Name:</label>
+      <input type="text" id="farm-name" name="farm-name" required>
+
+      <label for="farm-location">Farm Location:</label>
+      <input type="text" id="farm-location" name="farm-location" required>
+
+      <label for="farm-type">Farm Type:</label>
+      <select id="farm-type" name="farm-type" required>
+        <option value="" disabled selected>Select farm type</option>
+        <option value="Arable Agriculture">Arable Agriculture</option>
+        <option value="Viticulture">Viticulture</option>
+        <option value="Horticulture">Horticulture</option>
+        <option value="Livestock">Livestock</option>
+        <option value="Agroforestry">Agroforestry</option>
+      </select>
+
+      <div id="questions-container" style="display:none;">
+        <!-- Questions will populate dynamically -->
+      </div>
+
+      <button type="submit">Calculate Potential SOC</button>
+    </form>
+  </section>
+
+  <section id="result-section" style="display: none;">
+    <h2>Potential SOC Increase</h2>
+    <p id="result">Calculating...</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Agrable. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
